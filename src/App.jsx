@@ -5,13 +5,6 @@
  */
 
 import React from "react";
-
-import About from "./Components/About";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-import Home from "./Components/Home";
-import Portfolio from "./Components/Portfolio";
-
 import "./styles.css";
 
 /**
@@ -28,26 +21,47 @@ const siteProps = {
   title: "Web Designer & Content Creator",
   email: "alex@example.com",
   gitHub: "microsoft",
-  instagram: "microsoft",
-  linkedIn: "satyanadella",
-  medium: "",
-  twitter: "microsoft",
-  youTube: "Code",
 };
 
-const primaryColor = "#4E567E";
-const secondaryColor = "#D2F1E4";
+const primaryColor = "#fff";
+const accentColor = "#222";
 
-const App = () => {
+function App() {
   return (
-    <div id="main">
-      <Header />
-      <Home name={siteProps.name} title={siteProps.title} />
-      <About />
-      <Portfolio />
-      <Footer {...siteProps} primaryColor={primaryColor} secondaryColor={secondaryColor} />
+    <div
+      style={{
+        fontFamily: "sans-serif",
+        background: primaryColor,
+        color: accentColor,
+        minHeight: "100vh",
+      }}
+    >
+      <header style={{ padding: "2rem 0", textAlign: "center" }}>
+        <h1 style={{ margin: 0 }}>{siteProps.name}</h1>
+        <p style={{ margin: 0 }}>{siteProps.title}</p>
+      </header>
+      <main style={{ maxWidth: 600, margin: "2rem auto", textAlign: "center" }}>
+        <p>Hi, I&apos;m {siteProps.name}. I design and create content for the web.</p>
+      </main>
+      <footer style={{ padding: "2rem 0", textAlign: "center", borderTop: "1px solid #eee" }}>
+        <a
+          href={`mailto:${siteProps.email}`}
+          style={{ margin: "0 1rem", color: accentColor, textDecoration: "none" }}
+        >
+          Email
+        </a>
+        <a
+          href={`https://github.com/${siteProps.gitHub}`}
+          style={{ margin: "0 1rem", color: accentColor, textDecoration: "none" }}
+        >
+          GitHub
+        </a>
+        <div style={{ marginTop: "1rem", fontSize: "0.9em", color: "#888" }}>
+          &copy; {new Date().getFullYear()} {siteProps.name}
+        </div>
+      </footer>
     </div>
   );
-};
+}
 
 export default App;
